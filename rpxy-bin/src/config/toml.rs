@@ -336,8 +336,8 @@ impl TryInto<ProxyConfig> for &ConfigToml {
       );
     }
 
-    let v4_addrs = self.listen_address_v4.clone().map(|o| o.into_vec());
-    let v6_addrs = self.listen_address_v6.clone().map(|o| o.into_vec());
+    let v4_addrs = self.listen_address_v4.clone().map(OneOrMany::into_vec);
+    let v6_addrs = self.listen_address_v6.clone().map(OneOrMany::into_vec);
     proxy_config.listen_sockets = build_listen_sockets(
       &v4_addrs,
       &v6_addrs,
