@@ -237,8 +237,7 @@ where
 
     if !should_upgrade {
       return Err(HttpError::FailedToUpgrade(format!(
-        "Backend tried to switch to protocol {:?} when {:?} was requested",
-        upgrade_in_response, upgrade_in_request
+        "Backend tried to switch to protocol {upgrade_in_response:?} when {upgrade_in_request:?} was requested"
       )));
     }
     // let Some(request_upgraded) = request_upgraded else {

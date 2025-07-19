@@ -132,7 +132,7 @@ mod tests {
       upstream: "https://backend.example.com".to_string(),
     };
 
-    let formatted = format!("{}", log);
+    let formatted = format!("{log}");
     assert!(!formatted.contains(" \"\""));
     assert!(formatted.contains("\"Mozilla/5.0\", \"10.0.0.1\" \"https://backend.example.com\""));
   }
@@ -154,7 +154,7 @@ mod tests {
       upstream: "https://backend.example.com".to_string(),
     };
 
-    let formatted = format!("{}", log);
+    let formatted = format!("{log}");
     assert!(formatted.contains(" \"for=192.0.2.60;proto=http;by=203.0.113.43\""));
     assert!(
       formatted

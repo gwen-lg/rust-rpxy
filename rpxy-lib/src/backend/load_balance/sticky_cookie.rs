@@ -225,8 +225,7 @@ mod tests {
     assert_eq!(
       secure_string,
       format!(
-        "{}=test_value; expires=Thu, 08-Jun-2023 10:46:13 GMT; Max-Age={}; path=/path; domain=example.com; HttpOnly; SameSite=Lax; Secure",
-        STICKY_COOKIE_NAME, max_age
+        "{STICKY_COOKIE_NAME}=test_value; expires=Thu, 08-Jun-2023 10:46:13 GMT; Max-Age={max_age}; path=/path; domain=example.com; HttpOnly; SameSite=Lax; Secure"
       )
     );
 

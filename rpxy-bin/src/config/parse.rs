@@ -83,7 +83,7 @@ fn build_tls_for_app_acme(
     let subdir = format!("{}/{}", acme_registry_path, server_name.to_ascii_lowercase());
     let file_name =
       rpxy_acme::DirCache::cached_cert_file_name(&[server_name.to_ascii_lowercase()], acme_dir_url.to_ascii_lowercase());
-    let cert_path = format!("{}/{}", subdir, file_name);
+    let cert_path = format!("{subdir}/{file_name}");
     tls.tls_cert_key_path = Some(cert_path.clone());
     tls.tls_cert_path = Some(cert_path);
   }

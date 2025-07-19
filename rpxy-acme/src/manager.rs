@@ -150,7 +150,7 @@ impl AcmeManager {
     ))?;
 
     let verifier = rustls_platform_verifier::Verifier::new(crypto_provider.clone())
-      .map_err(|e| RpxyAcmeError::TlsClientConfig(format!("Failed to create certificate verifier: {}", e)))?;
+      .map_err(|e| RpxyAcmeError::TlsClientConfig(format!("Failed to create certificate verifier: {e}")))?;
 
     let client_config = rustls::ClientConfig::builder()
       .dangerous() // Safe: using platform certificate verifier

@@ -21,7 +21,7 @@ pub fn init_logger(log_dir_path: Option<&str>) {
 
 /// file logging
 fn init_file_logger(level: tracing::Level, log_dir_path: &str) {
-  println!("Activate logging to files: {}", log_dir_path);
+  println!("Activate logging to files: {log_dir_path}");
   let log_dir = std::path::Path::new(log_dir_path);
 
   if !log_dir.exists() {

@@ -241,9 +241,7 @@ mod tests {
     let body_expected_size = mem::size_of::<u64>() * 5;
     assert!(
       body_size <= body_expected_size,
-      "Body size = {} <= {}",
-      body_size,
-      body_expected_size,
+      "Body size = {body_size} <= {body_expected_size}",
     );
 
     //assert_eq!(body_size, mem::size_of::<Option<Incoming>>(), "Option<Incoming>");
@@ -256,8 +254,8 @@ mod tests {
   fn size_hint() {
     fn eq(body: IncomingLike, b: SizeHint, note: &str) {
       let a = body.size_hint();
-      assert_eq!(a.lower(), b.lower(), "lower for {:?}", note);
-      assert_eq!(a.upper(), b.upper(), "upper for {:?}", note);
+      assert_eq!(a.lower(), b.lower(), "lower for {note:?}");
+      assert_eq!(a.upper(), b.upper(), "upper for {note:?}");
     }
 
     eq(IncomingLike::channel().1, SizeHint::new(), "channel");
@@ -277,7 +275,7 @@ mod tests {
 
     match rx.frame().await.unwrap() {
       Err(RpxyError::HyperNewBodyWriteAborted) => true,
-      unexpected => panic!("unexpected: {:?}", unexpected),
+      unexpected => panic!("unexpected: {unexpected:?}"),
     };
   }
 
@@ -294,7 +292,7 @@ mod tests {
 
     match rx.frame().await.unwrap() {
       Err(RpxyError::HyperNewBodyWriteAborted) => true,
-      unexpected => panic!("unexpected: {:?}", unexpected),
+      unexpected => panic!("unexpected: {unexpected:?}"),
     };
   }
 
@@ -354,7 +352,7 @@ mod tests {
 
     match tx_ready.poll() {
       Poll::Ready(Err(RpxyError::HyperIncomingLikeNewClosed)) => (),
-      unexpected => panic!("tx poll ready unexpected: {:?}", unexpected),
+      unexpected => panic!("tx poll ready unexpected: {unexpected:?}"),
     }
   }
 }

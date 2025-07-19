@@ -106,7 +106,7 @@ impl DirCache {
     }
     ctx.update(directory_url.as_ref().as_bytes());
     let hash = BASE64_URL_SAFE_NO_PAD.encode(ctx.finish());
-    format!("cached_account_{}", hash)
+    format!("cached_account_{hash}")
   }
   pub fn cached_cert_file_name(domains: &[String], directory_url: impl AsRef<str>) -> String {
     let mut ctx = Context::new(&SHA256);
@@ -116,7 +116,7 @@ impl DirCache {
     }
     ctx.update(directory_url.as_ref().as_bytes());
     let hash = BASE64_URL_SAFE_NO_PAD.encode(ctx.finish());
-    format!("cached_cert_{}", hash)
+    format!("cached_cert_{hash}")
   }
 
   /// Verify that we have write permissions to both account and cert directories.
