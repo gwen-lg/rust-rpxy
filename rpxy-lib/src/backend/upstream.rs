@@ -101,8 +101,7 @@ impl PathManager {
       .filter(|(route_bytes, _)| {
         path_name.starts_with(route_bytes) && {
           route_bytes.len() == 1 // route = '/', i.e., default
-            || path_name.get(route_bytes.len()).map_or(
-              true, // exact case
+            || path_name.get(route_bytes.len()).is_none_or(
               |p| p == &b'/'
             ) // sub-path case
         }
@@ -266,15 +265,12 @@ impl UpstreamCandidatesBuilder {
 
   /// Set the activated upstream options defined in [[UpstreamOption]]
   pub fn options(&mut self, v: &Option<Vec<String>>) -> &mut Self {
-    let opts = v.as_ref().map_or_else(
-      Default::default,
-      |opts| {
-        opts
-          .iter()
-          .filter_map(|str| UpstreamOption::try_from(str.as_str()).ok())
-          .collect::<HashSet<UpstreamOption>>()
-      },
-    );
+    let opts = v.as_ref().map_or_else(Default::default, |opts| {
+      opts
+        .iter()
+        .filter_map(|str| UpstreamOption::try_from(str.as_str()).ok())
+        .collect::<HashSet<UpstreamOption>>()
+    });
     self.options = Some(opts);
     self
   }
