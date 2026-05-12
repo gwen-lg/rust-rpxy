@@ -28,7 +28,7 @@ pub const MAX_CACHE_ENTRY: usize = 1_000;
 // max size for each file in bytes
 pub const MAX_CACHE_EACH_SIZE: usize = 65_535;
 #[cfg(feature = "cache")]
-// on memory cache if less than or equel to
+// on memory cache if less than or equal to
 pub const MAX_CACHE_EACH_SIZE_ON_MEMORY: usize = 4_096;
 
 #[cfg(feature = "proxy-protocol")]

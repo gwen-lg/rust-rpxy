@@ -67,7 +67,7 @@ services:
     networks:
       bench-nw:
 
-  # Sozu wokrs only in X86_64 (amd64) environment
+  # Sozu works only in X86_64 (amd64) environment
   # Official image from sozu developers is still version 0.11.0.
   # So we built it by ourselves locally.
   sozu-rp:

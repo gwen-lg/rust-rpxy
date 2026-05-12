@@ -29,7 +29,7 @@
   - Currently, we took the following approach (caveats)
     - For Http2 and 1.1, prepare `rustls::ServerConfig` for each domain name and hence client CA cert is set for each one.
     - For Http3, use aggregated `rustls::ServerConfig` for multiple domain names except for ones requiring client-auth. So, if a domain name is set with client authentication, http3 doesn't work for the domain.
-- Make the session-persistance option for load-balancing sophisticated. (mostly done in v0.3.0)
+- Make the session-persistence option for load-balancing sophisticated. (mostly done in v0.3.0)
   - add option for sticky cookie name
   - add option for sticky cookie duration
 - etc.

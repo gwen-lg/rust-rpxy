@@ -202,10 +202,10 @@ pub enum LoadBalance {
   FixToFirst,
   /// Randomly chose one upstream server
   Random(LoadBalanceRandom),
-  /// Simple round robin without session persistance
+  /// Simple round robin without session persistence
   RoundRobin(LoadBalanceRoundRobin),
   #[cfg(feature = "sticky-cookie")]
-  /// Round robin with session persistance using cookie
+  /// Round robin with session persistence using cookie
   StickyRoundRobin(LoadBalanceSticky),
   #[cfg(feature = "health-check")]
   /// Primary/Backup: always prefer the lowest-indexed healthy upstream

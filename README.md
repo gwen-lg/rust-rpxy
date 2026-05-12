@@ -230,7 +230,7 @@ In the current Web, it is common to serve everything through HTTPS rather than H
 tls = { https_redirection = true, tls_cert_path = 'server.crt', tls_cert_key_path = 'server.key' }
 ```
 
-If it is true, `rpxy` returns status code `301` to the cleartext request with the new location `https://<requested_host>/<requested_query_and_path>` served over TLS. Note tht `https_redirection` can be set only when both `listen_port` and `listen_port_tls` are specified in the global section.
+If it is true, `rpxy` returns status code `301` to the cleartext request with the new location `https://<requested_host>/<requested_query_and_path>` served over TLS. Note that `https_redirection` can be set only when both `listen_port` and `listen_port_tls` are specified in the global section.
 
 ### Third Step: More Flexible Routing Based on URL Path
 

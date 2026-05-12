@@ -467,7 +467,7 @@ fn parse_forwarded_node(token: &str) -> Result<ForwardedNode> {
     });
   }
   // RFC 7239 requires IPv6 literals with a port to be bracketed (e.g. `[2001:db8::1]:443`).
-  // Applying rsplit_once(':') unconditionally would mis-parse an unbracketed IPv6 such as
+  // Applying rsplit_once(':') unconditionally would miss-parse an unbracketed IPv6 such as
   // `2001:db8::4711` as `ip=2001:db8::` + `port=4711`. So only split on ':' when the token
   // is bracketed, or when it contains exactly one ':' (IPv4 / unknown / obfuscated).
   if trimmed.starts_with('[') {
@@ -1174,7 +1174,7 @@ mod tests {
 
   #[test]
   fn parse_forwarded_node_accepts_unbracketed_ipv6_without_port() {
-    // An unbracketed IPv6 literal must not be mis-parsed as `ip + :port`:
+    // An unbracketed IPv6 literal must not be miss-parsed as `ip + :port`:
     // the trailing `::4711` is a valid hextet, not a port.
     let node = parse_forwarded_node("2001:db8::4711").unwrap();
     assert_eq!(node.ip, Some("2001:db8::4711".parse::<IpAddr>().unwrap()));

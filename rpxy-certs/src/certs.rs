@@ -120,8 +120,8 @@ mod tests {
     assert!(crypto_elem.is_ok());
 
     let crypto_elem = crypto_elem.unwrap();
-    let certificed_key = crypto_elem.rustls_certified_key();
-    assert!(certificed_key.is_ok());
+    let certified_key = crypto_elem.rustls_certified_key();
+    assert!(certified_key.is_ok());
   }
 
   #[tokio::test]
@@ -143,8 +143,8 @@ mod tests {
     let crypto_elem = crypto_elem.unwrap();
     assert!(crypto_elem.is_mutual_tls());
 
-    let certificed_key = crypto_elem.rustls_certified_key();
-    assert!(certificed_key.is_ok());
+    let certified_key = crypto_elem.rustls_certified_key();
+    assert!(certified_key.is_ok());
 
     let trust_anchors = crypto_elem.rustls_client_certs_trust_anchors();
     assert!(trust_anchors.is_ok());
