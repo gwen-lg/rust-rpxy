@@ -15,12 +15,12 @@ publish.workspace = true
 [features]
 http3-quinn = ["quinn", "h3", "h3-quinn", "rpxy-certs/http3"]
 http3-s2n = [
-  "s2n-quic",
-  "s2n-quic-core",
-  "s2n-quic-rustls",
-  "s2n-quic-h3",
-  "rpxy-certs/http3",
-  "h3",
+    "s2n-quic",
+    "s2n-quic-core",
+    "s2n-quic-rustls",
+    "s2n-quic-h3",
+    "rpxy-certs/http3",
+    "h3",
 ]
 health-check = []
 proxy-protocol = ["dep:ppp"]
@@ -31,57 +31,57 @@ rustls-backend = ["hyper-rustls"]
 webpki-roots = ["rustls-backend", "hyper-rustls/webpki-tokio"]
 acme = ["rpxy-acme"]
 post-quantum = [
-  "rustls-post-quantum",
-  "rpxy-acme/post-quantum",
-  "rpxy-certs/post-quantum",
-  "s2n-quic-rustls/post-quantum",
+    "rustls-post-quantum",
+    "rpxy-acme/post-quantum",
+    "rpxy-certs/post-quantum",
+    "s2n-quic-rustls/post-quantum",
 ]
 
 [dependencies]
-rand = "0.10.1"
 ahash = "0.8.12"
+async-trait = "0.1.89"
 bytes = "1.11.1"
 derive_builder = "0.20.2"
 futures = { version = "0.3.32", features = ["alloc", "async-await"] }
+pin-project-lite = "0.2.17"
+rand = "0.10.1"
 tokio = { version = "1.52.3", default-features = false, features = [
-  "net",
-  "rt-multi-thread",
-  "time",
-  "sync",
-  "macros",
-  "fs",
+    "fs",
+    "macros",
+    "net",
+    "rt-multi-thread",
+    "sync",
+    "time",
 ] }
 tokio-util = { version = "0.7.18", default-features = false }
-pin-project-lite = "0.2.17"
-async-trait = "0.1.89"
 
 # Error handling
 anyhow = "1.0.102"
 thiserror = "2.0.18"
 
 # http for both server and client
+futures-channel = { version = "0.3.32", default-features = false }
+futures-util = { version = "0.3.32", default-features = false }
 http = "1.4.0"
 http-body-util = "0.1.3"
 hyper = { version = "1.9.0", default-features = false }
 hyper-util = { version = "0.1.20", features = ["full"] }
-futures-util = { version = "0.3.32", default-features = false }
-futures-channel = { version = "0.3.32", default-features = false }
 
 # http client for upstream
-hyper-tls = { version = "0.6.0", features = [
-  "alpn",
-  "vendored",
-], optional = true }
 hyper-rustls = { version = "0.27.9", default-features = false, features = [
-  "aws-lc-rs",
-  "http1",
-  "http2",
-  "rustls-platform-verifier",
+    "aws-lc-rs",
+    "http1",
+    "http2",
+    "rustls-platform-verifier",
+], optional = true }
+hyper-tls = { version = "0.6.0", features = [
+    "alpn",
+    "vendored",
 ], optional = true }
 
 # tls and cert management for server
-rpxy-certs = { path = "../rpxy-certs/", default-features = false }
 hot_reload = "0.3.6"
+rpxy-certs = { path = "../rpxy-certs/", default-features = false }
 rustls = { version = "0.23.40", default-features = false }
 rustls-post-quantum = { version = "0.2.4", optional = true }
 tokio-rustls = { version = "0.26.4", features = ["early-data"] }
@@ -93,17 +93,17 @@ rpxy-acme = { path = "../rpxy-acme/", default-features = false, optional = true 
 tracing = { version = "0.1.44" }
 
 # http/3
-quinn = { version = "0.11.9", optional = true }
 h3 = { version = "0.0.8", features = ["tracing"], optional = true }
 h3-quinn = { version = "0.0.10", optional = true }
+quinn = { version = "0.11.9", optional = true }
 s2n-quic = { version = "1.78.0", path = "../submodules/s2n-quic/quic/s2n-quic/", default-features = false, features = [
-  "provider-tls-rustls",
+    "provider-tls-rustls",
 ], optional = true }
 s2n-quic-core = { version = "0.78.0", path = "../submodules/s2n-quic/quic/s2n-quic-core", default-features = false, optional = true }
-s2n-quic-rustls = { version = "0.78.0", path = "../submodules/s2n-quic/quic/s2n-quic-rustls", optional = true }
 s2n-quic-h3 = { path = "../submodules/s2n-quic/quic/s2n-quic-h3/", features = [
-  "tracing",
+    "tracing",
 ], optional = true }
+s2n-quic-rustls = { version = "0.78.0", path = "../submodules/s2n-quic/quic/s2n-quic-rustls", optional = true }
 ##########
 # for UDP socket with SO_REUSEADDR and set_only_v6 for socket binding
 socket2 = { version = "0.6.3", features = ["all"] }
@@ -114,16 +114,16 @@ lru = { version = "0.18.0", optional = true }
 sha2 = { version = "0.11.0", default-features = false, optional = true }
 
 # proxy protocol / CIDR matching
-ppp = { version = "2.3.0", optional = true }
 ipnet = { version = "2.12.0" }
+ppp = { version = "2.3.0", optional = true }
 
 # cookie handling for sticky cookie
-chrono = { version = "0.4.44", default-features = false, features = [
-  "unstable-locales",
-  "alloc",
-  "clock",
-], optional = true }
 base64 = { version = "0.22.1", optional = true }
+chrono = { version = "0.4.44", default-features = false, features = [
+    "alloc",
+    "clock",
+    "unstable-locales",
+], optional = true }
 # Intentional RC pin: this code targets the 0.11 AEAD nonce-generation API.
 # Re-evaluate this dependency, or vendor/pin a final release, before the release freeze.
 aes-gcm = { version = "0.11.0-rc.3", optional = true, features = ["rand_core"] }

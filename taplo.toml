@@ -1,0 +1,13 @@
+include = ["**/Cargo.toml", "taplo.toml"]
+exclude = ["submodules/**"]
+
+[formatting]
+indent_string = "    "
+
+[[rule]]
+include = ["**/Cargo.toml", "taplo.toml"]
+keys = ["dependencies", "dev-dependencies", "lints.clippy", "lints.rust"]
+
+[rule.formatting]
+reorder_keys = true
+reorder_arrays = true

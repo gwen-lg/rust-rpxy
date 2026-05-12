@@ -9,7 +9,13 @@ edition = "2024"
 publish = false
 
 [workspace]
-members = ["rpxy-bin", "rpxy-lib", "rpxy-certs", "rpxy-acme", "rpxy-trusted-proxies"]
+members = [
+    "rpxy-bin",
+    "rpxy-lib",
+    "rpxy-certs",
+    "rpxy-acme",
+    "rpxy-trusted-proxies",
+]
 exclude = ["submodules"]
 resolver = "2"
 

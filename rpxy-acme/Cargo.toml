@@ -14,40 +14,40 @@ publish.workspace = true
 post-quantum = ["rustls-post-quantum"]
 
 [dependencies]
-url = { version = "2.5.8" }
 ahash = "0.8.12"
-thiserror = "2.0.18"
-tracing = "0.1.44"
 async-trait = "0.1.89"
-base64 = "0.22.1"
 aws-lc-rs = { version = "1.16.3", default-features = false, features = [
-  "aws-lc-sys",
+    "aws-lc-sys",
 ] }
+base64 = "0.22.1"
 blocking = "1.6.2"
+futures-util = { version = "0.3.32", default-features = false, features = [
+    "alloc",
+] }
 rustls = { version = "0.23.40", default-features = false, features = [
-  "std",
-  "aws_lc_rs",
+    "aws_lc_rs",
+    "std",
+] }
+rustls-acme = { path = "../submodules/rustls-acme/", default-features = false, features = [
+    "aws-lc-rs",
+    "webpki-roots",
 ] }
 rustls-platform-verifier = { version = "0.7.0" }
-rustls-acme = { path = "../submodules/rustls-acme/", default-features = false, features = [
-  "aws-lc-rs",
-  "webpki-roots",
-] }
 rustls-post-quantum = { version = "0.2.4", optional = true }
+thiserror = "2.0.18"
 tokio = { version = "1.52.3", default-features = false, features = [
-  "rt",
-  "macros",
+    "macros",
+    "rt",
 ] }
-tokio-util = { version = "0.7.18", default-features = false }
 tokio-stream = { version = "0.1.18", default-features = false }
-futures-util = { version = "0.3.32", default-features = false, features = [
-  "alloc",
-] }
+tokio-util = { version = "0.7.18", default-features = false }
+tracing = "0.1.44"
+url = { version = "2.5.8" }
 
 [dev-dependencies]
 tempfile = "3.27"
 tokio = { version = "1.52.3", default-features = false, features = [
-  "rt",
-  "macros",
-  "rt-multi-thread",
+    "macros",
+    "rt",
+    "rt-multi-thread",
 ] }
