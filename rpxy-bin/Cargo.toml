@@ -92,3 +92,6 @@ rpxy-acme = { path = "../rpxy-acme/", default-features = false, optional = true 
 mimalloc = { version = "0.1.50", default-features = false }
 
 [dev-dependencies]
+
+# [lints]
+# workspace = true
