@@ -349,7 +349,7 @@ impl FileStoreInner {
             hasher.update(bytes.as_ref());
             body_tx
               .unbounded_send(Ok(Frame::data(bytes)))
-              .map_err(|e| CacheError::FailedToSendFrameFromCache(e.to_string()))?
+              .map_err(|e| CacheError::FailedToSendFrameFromCache(e.to_string()))?;
           }
           Err(_) => break,
         };

@@ -96,9 +96,9 @@ pub async fn entrypoint(
 
   // For initial message logging
   if proxy_config.listen_sockets.iter().any(|addr| addr.is_ipv6()) {
-    info!("Listen both IPv4 and IPv6")
+    info!("Listen both IPv4 and IPv6");
   } else {
-    info!("Listen IPv4")
+    info!("Listen IPv4");
   }
   if proxy_config.http_port.is_some() {
     info!("Listen port: {}", proxy_config.http_port.unwrap());
@@ -130,7 +130,7 @@ pub async fn entrypoint(
   if proxy_config.cache_enabled {
     info!("Cache is enabled: cache dir = {:?}", proxy_config.cache_dir.as_ref().unwrap());
   } else {
-    info!("Cache is disabled")
+    info!("Cache is disabled");
   }
   #[cfg(feature = "proxy-protocol")]
   if let Some(ref pp_config) = proxy_config.tcp_recv_proxy_protocol {
@@ -203,7 +203,7 @@ pub async fn entrypoint(
   addresses.into_iter().for_each(|listening_on| {
     let mut tls_enabled = false;
     if let Some(https_port) = globals.proxy_config.https_port {
-      tls_enabled = https_port == listening_on.port()
+      tls_enabled = https_port == listening_on.port();
     }
     let kind = match (tls_enabled, listening_on.is_ipv4()) {
       (false, true) => ListenerKind::HttpV4,

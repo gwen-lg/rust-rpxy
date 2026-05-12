@@ -387,7 +387,7 @@ impl TryInto<ProxyConfig> for &ConfigToml {
             if x == 0u64 {
               proxy_config.h3_max_idle_timeout = None;
             } else {
-              proxy_config.h3_max_idle_timeout = Some(Duration::from_secs(x))
+              proxy_config.h3_max_idle_timeout = Some(Duration::from_secs(x));
             }
           }
         }
@@ -641,7 +641,7 @@ impl TryInto<Vec<ReverseProxyConfig>> for &Application {
         load_balance: rpo.load_balance.clone(),
         #[cfg(feature = "health-check")]
         health_check,
-      })
+      });
     }
 
     Ok(reverse_proxies)

@@ -287,7 +287,7 @@ async fn rpxy_service(
           Err(e) => {
             error!("rpxy failed to be ready. Configuration does not updated: {e}");
           }
-        };
+        }
         info!("Terminate all spawned services and force to re-bind TCP/UDP sockets");
         cancel_token.cancel();
       }

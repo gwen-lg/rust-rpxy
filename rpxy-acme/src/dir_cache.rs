@@ -102,7 +102,7 @@ impl DirCache {
     let mut ctx = Context::new(&SHA256);
     for el in contact {
       ctx.update(el.as_ref());
-      ctx.update(&[0])
+      ctx.update(&[0]);
     }
     ctx.update(directory_url.as_ref().as_bytes());
     let hash = BASE64_URL_SAFE_NO_PAD.encode(ctx.finish());
@@ -112,7 +112,7 @@ impl DirCache {
     let mut ctx = Context::new(&SHA256);
     for domain in domains {
       ctx.update(domain.as_ref());
-      ctx.update(&[0])
+      ctx.update(&[0]);
     }
     ctx.update(directory_url.as_ref().as_bytes());
     let hash = BASE64_URL_SAFE_NO_PAD.encode(ctx.finish());
