@@ -323,11 +323,10 @@ impl TryInto<ProxyConfig> for &ConfigToml {
       proxy_config.http_port.is_some() || proxy_config.https_port.is_some(),
       anyhow!("Either/Both of http_port or https_port must be specified")
     );
-    if proxy_config.http_port.is_some() && proxy_config.https_port.is_some() {
-      ensure!(
-        proxy_config.http_port.unwrap() != proxy_config.https_port.unwrap(),
-        anyhow!("http_port and https_port must be different")
-      );
+    if let Some(http_port) = proxy_config.http_port
+      && let Some(https_port) = proxy_config.https_port
+    {
+      ensure!(http_port != https_port, anyhow!("http_port and https_port must be different"));
     }
     if self.https_redirection_port.is_some() {
       ensure!(
@@ -572,9 +571,7 @@ impl Application {
       .try_for_each(|rpc| validate_lb_health_check(server_name_string, rpc.load_balance.as_deref(), &rpc.health_check))?;
 
     // tls settings
-    let tls_config = if self.tls.is_some() {
-      let tls = self.tls.as_ref().unwrap();
-
+    let tls_config = if let Some(tls) = &self.tls {
       #[cfg(not(feature = "acme"))]
       ensure!(tls.tls_cert_key_path.is_some() && tls.tls_cert_path.is_some());
 
