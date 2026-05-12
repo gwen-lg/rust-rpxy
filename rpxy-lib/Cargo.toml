@@ -132,3 +132,6 @@ secrecy = { version = "0.10.3", optional = true }
 
 [dev-dependencies]
 tokio-test = "0.4.5"
+
+[lints]
+workspace = true

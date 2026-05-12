@@ -93,5 +93,5 @@ mimalloc = { version = "0.1.50", default-features = false }
 
 [dev-dependencies]
 
-# [lints]
-# workspace = true
+[lints]
+workspace = true

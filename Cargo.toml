@@ -27,5 +27,5 @@ opt-level = 3
 panic = "abort"
 strip = true
 
-# [workspace.lints.clippy]
-# pedantic = { level = "warn", priority = -1 }
+[workspace.lints.clippy]
+# pedantic = { level = "warn", priority = -1 }his if statement can be collapsed
