@@ -38,7 +38,7 @@ fn overwrite_x_forwarded_host_from_original(headers: &mut HeaderMap, original_ur
 ///
 /// Keeping this representation in one place makes the trust-boundary logic
 /// easier to audit than passing partially parsed headers across multiple helpers.
-
+///
 /// An entry in Forwarded header with only the parameters relevant for forwarding chain normalization and consistency check.
 #[derive(Clone, Debug, PartialEq, Eq)]
 struct ForwardedNode {
