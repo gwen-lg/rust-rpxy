@@ -1,2 +1,9 @@
+[default.extend-words]
+wrk = "wrk" # wrk is valid shell cmd
+
+[default.extend-identifiers]
+wrk = "wrk" # wrk is valid shell cmd
+# ReWrk = "ReWrk" # wrk is valid shell cmd
+
 [files]
 extend-exclude = ["example-certs/*", "submodules/*", "CHANGELOG.md"]
